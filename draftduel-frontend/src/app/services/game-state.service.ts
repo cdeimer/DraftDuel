@@ -17,7 +17,24 @@ export interface GameState {
   providedIn: 'root',
 })
 export class GameStateService {
-  constructor(private statsService: StatsService) {}
+  gameState: GameState;
+
+  constructor(private statsService: StatsService) {
+    this.gameState = this.initializeGameState();
+  }
+
+  initializeGameState(): GameState {
+    return {
+      gameId: 'random-uuid',
+      currentPlayer: 1,
+      draftPool: this.statsService.getMockDraftPool(),
+      playerOneRoster: new Roster(),
+      playerTwoRoster: new Roster(),
+      playerOneScores: [],
+      playerTwoScores: [],
+      gamePhase: 'PreDraft',
+    };
+  }
 
   generateGameState(): GameState {
     return {

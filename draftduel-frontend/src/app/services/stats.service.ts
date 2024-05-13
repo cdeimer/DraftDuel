@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { mockPlayerPool } from '../mock_data/mock-player-pool';
 import { Roster } from '../classes/roster';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, firstValueFrom } from 'rxjs';
 
 export interface Player {
   id: string;
@@ -132,7 +132,7 @@ export class StatsService {
   // get scores for roster
   // backend endpoint: @app.get("/season/{season}/player/{player_id}/random_week")
   // async def get_random_week_for_player(season: int, player_id: str) -> PlayerBoxScore:
-  getScoresForRoster(roster: Roster) {
+  async getScoresForRoster(roster: Roster): Promise<any> {
     roster.players.forEach((player) => {
       this.http
         .get<PlayerBoxScore>(
@@ -145,6 +145,7 @@ export class StatsService {
         .subscribe((playerBoxScore) => {
           console.log(player.name, playerBoxScore.fantasy_points);
           player.score = playerBoxScore.fantasy_points;
+          player.player_box_score = playerBoxScore;
         });
     });
   }

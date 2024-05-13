@@ -1,0 +1,4 @@
+<div *ngFor="let player of players">
+  <h3>{{ player.name }} - Week {{ player.player_box_score?.week }}, {{ player.season }}</h3>
+  <p>{{ player.player_box_score?.fantasy_points }}</p>
+</div>

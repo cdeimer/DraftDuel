@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { JsonPipe, NgFor, NgIf } from '@angular/common';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
 import { RosterComponent } from './components/roster/roster.component';
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { GameState, GameStateService } from './services/game-state.service';
 import { Player, StatsService } from './services/stats.service';
 
@@ -16,6 +17,7 @@ import { Player, StatsService } from './services/stats.service';
     NgFor,
     NgIf,
     RosterComponent,
+    ScoreboardComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -28,7 +30,7 @@ export class AppComponent {
     private gameStateService: GameStateService,
     private statsService: StatsService
   ) {
-    this.gameState = this.gameStateService.generateGameState();
+    this.gameState = this.gameStateService.gameState;
   }
 
   ngOnInit() {

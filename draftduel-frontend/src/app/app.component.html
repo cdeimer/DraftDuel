@@ -40,7 +40,9 @@
     <!-- Post draft view that displays the winner of the draft and a reset button -->
     <div *ngIf="gameState.gamePhase=='PostDraft'" class="post-draft">
       <h2>P1 Score: {{ gameState.playerOneScores[gameState.playerOneScores.length - 1] }}</h2>
+      <app-scoreboard [user]=1></app-scoreboard>
       <h2>P2 Score: {{ gameState.playerTwoScores[gameState.playerOneScores.length - 1] }}</h2>
+      <app-scoreboard [user]=2></app-scoreboard>
       <button (click)="resetDraft()">Reset Game</button>
     </div>
     
