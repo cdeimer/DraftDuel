@@ -1,0 +1,17 @@
+<div class="roster-container">
+    <!-- iterate over the roster list -->
+    <div *ngFor="let roster of rosters" class="roster">
+        <p>Roster Name</p>
+        <div *ngFor="let position of positionList">
+            <div class="roster-position-header">
+                <h2>{{ position }}</h2>
+            </div>
+            <div class="roster-players-filled">
+                <app-roster-entry *ngFor="let player of roster.getPlayersFilled(position)" [player]="player"></app-roster-entry>
+            </div>
+            <div class="roster-players-empty">
+                <app-empty-roster-entry *ngFor="let player of roster.getPlayersNeeded(position)"></app-empty-roster-entry>
+            </div>
+        </div>
+    </div>
+</div>

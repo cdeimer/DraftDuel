@@ -1,0 +1,64 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<main class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Welcome to {{ title }}!</h1>
+      </div>
+    </div>
+  </div>
+  <div>
+
+    <!-- Pre draft view that contains a "start draft" button -->
+    <div *ngIf="gameState.gamePhase=='PreDraft'" class="pre-draft">
+      <button (click)="startDraft()">Start Draft</button>
+    </div>
+
+    <div *ngIf="gameState.gamePhase=='Draft'" class="draft-interface">
+      <h2>Current Player: {{ gameState.currentPlayer }}</h2>
+      <h2>QBs</h2>
+      <draft-pool-player-card *ngFor="let player of gameState.draftPool.qbs" [player]="player" [gameState]="gameState"></draft-pool-player-card>
+      <h2>RBs</h2>
+      <draft-pool-player-card *ngFor="let player of gameState.draftPool.rbs" [player]="player" [gameState]="gameState"></draft-pool-player-card>
+      <h2>WRs</h2>
+      <draft-pool-player-card *ngFor="let player of gameState.draftPool.wrs" [player]="player" [gameState]="gameState"></draft-pool-player-card>
+      <h2>TEs</h2>
+      <draft-pool-player-card *ngFor="let player of gameState.draftPool.tes" [player]="player" [gameState]="gameState"></draft-pool-player-card>
+
+      <!-- A button that activates when the draft is finished, and calls the calculate score method -->
+      <button (click)="endDraft()" [disabled]="!draftIsFinished()">End Draft</button>
+    </div>
+
+    <!-- Post draft view that displays the winner of the draft and a reset button -->
+    <div *ngIf="gameState.gamePhase=='PostDraft'" class="post-draft">
+      <h2>P1 Score: {{ gameState.playerOneScores[gameState.playerOneScores.length - 1] }}</h2>
+      <h2>P2 Score: {{ gameState.playerTwoScores[gameState.playerOneScores.length - 1] }}</h2>
+      <button (click)="resetDraft()">Reset Game</button>
+    </div>
+    
+    <!-- Rosters are visible anytime after the draft begins -->
+    <div *ngIf="gameState.gamePhase!='PreDraft'" class="rosters">
+      <app-roster [gameState]="gameState"></app-roster>
+    </div>
+
+  </div>
+</main>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<router-outlet />

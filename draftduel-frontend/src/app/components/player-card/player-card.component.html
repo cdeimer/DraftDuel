@@ -1,0 +1,5 @@
+<div class="player-card">
+    <button (click)="onTakePlayer(player)" [disabled]="!playerOneTurn() || !playerNeedsPosition(player.position)"> < </button>
+    {{ player.name }}
+    <button (click)="onTakePlayer(player)" [disabled]="playerOneTurn() || !playerNeedsPosition(player.position)"> > </button>
+</div>
