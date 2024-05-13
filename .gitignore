@@ -1,0 +1,15 @@
+# backend
+
+/backend/.venv
+
+# frontend
+
+/draftduel-frontend/node_modules
+/draftduel-frontend/.angular
+/draftduel-frontend/.vscode
+
+# database
+
+/database/.venv
+
+/python-archive
