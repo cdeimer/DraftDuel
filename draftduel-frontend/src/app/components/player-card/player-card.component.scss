@@ -1,0 +1,30 @@
+.player-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    margin: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .player-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .player-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
+  .card-content h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .card-content p {
+    margin: 8px 0;
+    color: #666;
+  }

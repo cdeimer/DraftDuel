@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Player } from '../../services/stats.service';
 import { GameState, GameStateService } from '../../services/game-state.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'draft-pool-player-card',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './player-card.component.html',
   styleUrl: './player-card.component.scss',
 })

@@ -43,7 +43,6 @@ export class AppComponent {
 
   startDraft() {
     this.gameState.gamePhase = 'Draft';
-    this.statsService.getPlayerPool();
   }
 
   endDraft() {

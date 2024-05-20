@@ -1,5 +1,9 @@
-<div class="player-card">
-    <button (click)="onTakePlayer(player)" [disabled]="!playerOneTurn() || !playerNeedsPosition(player.position)"> < </button>
-    {{ player.name }}
-    <button (click)="onTakePlayer(player)" [disabled]="playerOneTurn() || !playerNeedsPosition(player.position)"> > </button>
+<div class="player-card" [ngClass]="{'disabled': !playerNeedsPosition(player.position)}" (click)="onTakePlayer(player)">
+    <div class="card-content">
+        <h3>{{ player.name }}</h3>
+        <p>Season: {{ player.season }}</p>
+        <p>Team: {{ player.team }}</p>
+        <p>Fantasy Points: {{ player.fantasy_points }}</p>
+        <p>Games Played: {{ player.games_played }}</p>
+    </div>
 </div>
